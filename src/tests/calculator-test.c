@@ -63,6 +63,12 @@ START_TEST(testSubtractHandlesSubtractivePrefixes)
 }
 END_TEST
 
+START_TEST(testSubtract1From1000)
+{
+  assertSubtract("M","I","CMXCIX");
+}
+END_TEST
+
 START_TEST(testSubtractConvertsBackToSubtractivePrefixes)
 {
   assertSubtract("X","I","IX");//10-1=9
@@ -140,6 +146,7 @@ Suite * makeCalculatorSuite(void)
     tcase_add_test(tcCore, testSubtractReducesCommonNumerals);
     tcase_add_test(tcCore, testSubtractHandlesSubtractivePrefixes);
     tcase_add_test(tcCore, testSubtractConvertsBackToSubtractivePrefixes);
+    tcase_add_test(tcCore, testSubtract1From1000);
     tcase_add_test(tcCore, testSubtractBufferNeedsToBeAtleast100);
     tcase_add_test(tcCore, testSubtractBufferIsNotNull);
     tcase_add_test(tcCore, testAddBufferNeedsToBeAtleast100);
