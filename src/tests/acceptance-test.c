@@ -20,8 +20,8 @@ START_TEST(testAddAcceptance)
   char expectedNumeral[TEST_BUFFER_SIZE] = {'\0'};
 
   FILE *stream = openFileStreamAdd();
-
-  while (fgets(line, strlen(line), stream))
+  int addAsserts = 0;
+  while (fgets(line, TEST_BUFFER_SIZE, stream))
   {
       firstNumeral[0] = '\0';
       secondNumeral[0] = '\0';
@@ -38,7 +38,10 @@ START_TEST(testAddAcceptance)
       strcat(expectedNumeral, getfield(lineCopy, 3));
 
       assertAdd(firstNumeral, secondNumeral, expectedNumeral);
+      addAsserts++;
   }
+   ck_assert_int_eq(addAsserts, 3000);
+   printf(" Add Asserts: %d\n", addAsserts);
    fclose(stream);
 }
 END_TEST
@@ -52,7 +55,8 @@ START_TEST(testSubtractAcceptance)
   char expectedNumeral[TEST_BUFFER_SIZE] = {'\0'};
   FILE *stream = openFileStreamSubtract();
 
-  while (fgets(line, strlen(line), stream))
+  int subtractAsserts = 0;
+  while (fgets(line, TEST_BUFFER_SIZE, stream))
   {
       firstNumeral[0] = '\0';
       secondNumeral[0] = '\0';
@@ -69,7 +73,10 @@ START_TEST(testSubtractAcceptance)
       strcat(expectedNumeral, getfield(lineCopy, 3));
 
       assertSubtract(firstNumeral, secondNumeral, expectedNumeral);
+      subtractAsserts++;
   }
+   ck_assert_int_eq(subtractAsserts, 2000);
+   printf(" Subtract Asserts: %d\n", subtractAsserts);
    fclose(stream);
 }
 END_TEST
