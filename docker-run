@@ -1,0 +1,3 @@
+currentDirectory=$(pwd);
+docker run -v "${currentDirectory}":/projects/roman-numeral-calculator -it ubuntu:falcon
+exit;
